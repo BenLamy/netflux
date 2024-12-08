@@ -1,0 +1,15 @@
+<h1>My Likes</h1>
+
+<ul>
+  <% @likes.each do |like| %>
+    <li>
+      <strong>Movie:</strong> <%= like.movie.title %><br>
+      <img src="<%= like.movie.image_url %>" alt="<%= like.movie.title %>" style="width: 150px;"><br>
+      <%= link_to "Unlike", like_path(like), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+          class: 'btn btn-warning ml-2 mb-4'%>
+    </li>
+    <hr>
+  <% end %>
+</ul>
+
+<div><%= link_to "Back", movies_path, class: 'btn btn-primary' %></div>

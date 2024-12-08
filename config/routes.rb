@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'likes/new'
   get 'movies/new'
   devise_for :users
   # root to: "pages#home"
@@ -13,9 +14,9 @@ Rails.application.routes.draw do
   root to: "movies#index"
 
   resources :movies, only: [:index, :show, :new, :create] do
-    resources :likes, only: [:create, :new]
+    resources :likes, only: [:index, :show, :create, :new]
   end
 
-  resources :likes, only: :destroy
+  resources :likes, only: [:index, :destroy]
 
 end
