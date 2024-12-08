@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_07_183529) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_08_145913) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "movies_id", null: false
+    t.bigint "movie_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movies_id"], name: "index_likes_on_movies_id"
+    t.index ["movie_id"], name: "index_likes_on_movie_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -30,6 +30,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_07_183529) do
     t.string "director"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_url"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,6 +45,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_07_183529) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "likes", "movies", column: "movies_id"
+  add_foreign_key "likes", "movies"
   add_foreign_key "likes", "users"
 end
