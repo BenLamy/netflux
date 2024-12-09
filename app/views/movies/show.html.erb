@@ -1,6 +1,9 @@
 <h1><%= @movie.title %></h1>
 
 <ul>
+  <li>
+        <%= cl_image_tag @movie.photo.key, height: 300, width: 400, crop: :fill %>
+  </li>
   <li class="list-group-item mb-4">
     <em><p>Summary:</p><%= @movie.summary %></em>
   </li>

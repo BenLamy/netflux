@@ -4,7 +4,7 @@
  <div>
     <div>
       <div>
-        <img src="<%= movie.image_url %>" alt="<%= movie.title %>">
+        <%= cl_image_tag movie.photo.key, height: 300, width: 400, crop: :fill %>
       </div>
       <li class="list-group-item"><strong><%= movie.title %></strong></li>
       <li class="list-group-item"><em><p>Summary:</p><%= movie.summary %></em></li>
@@ -13,7 +13,6 @@
   <% end %>
   </div>
 </ul>
-
 
 <div class="text-center">
   <%= link_to "Mes Likes", likes_path, class: "btn btn-primary" %>
