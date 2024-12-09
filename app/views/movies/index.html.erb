@@ -1,19 +1,22 @@
-<h1>Listing Movies</h1>
-<ul>
+<div class="text-center my-4">
+  <h1>Listing Movies</h1>
+</div>
+
+<ul class="list-group">
   <% @movies.each do |movie| %>
- <div>
-    <div>
-      <div>
-        <%= cl_image_tag movie.photo.key, height: 300, width: 400, crop: :fill %>
+    <li class="list-group-item d-flex flex-column align-items-center mb-2" style="margin-bottom: 10px;">
+      <div class="mb-3">
+        <%= cl_image_tag movie.photo.key, height: 300, width: 400, class: "img-fluid rounded border", style: "object-fit: contain;" %>
       </div>
-      <li class="list-group-item"><strong><%= movie.title %></strong></li>
-      <li class="list-group-item"><em><p>Summary:</p><%= movie.summary %></em></li>
-    <div>
-      <div><%= link_to "Details", movie_path(movie), class: 'btn btn-primary' %></div>
+      <div class="text-center">
+        <h5 class="fw-bold"><%= movie.title %></h5>
+        <p class="fst-italic"><%= movie.summary %></p>
+        <%= link_to "Details", movie_path(movie), class: 'btn btn-outline-primary mt-2' %>
+      </div>
+    </li>
   <% end %>
-  </div>
 </ul>
 
-<div class="text-center">
-  <%= link_to "Mes Likes", likes_path, class: "btn btn-primary" %>
+<div class="text-center mt-4" style="margin-bottom: 10px;">
+  <%= link_to "Mes Likes", likes_path, class: "btn btn-warning btn-lg" %>
 </div>

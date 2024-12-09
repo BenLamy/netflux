@@ -1,23 +1,28 @@
-<h1><%= @movie.title %></h1>
+<div class="text-center my-4">
+  <h1><%= @movie.title %></h1>
+</div>
 
-<ul>
-  <li>
-        <%= cl_image_tag @movie.photo.key, height: 300, width: 400, crop: :fill %>
-  </li>
-  <li class="list-group-item mb-4">
-    <em><p>Summary:</p><%= @movie.summary %></em>
-  </li>
-  <li class="list-group-item mb-4">
-    <em><p>Director:</p><%= @movie.director %></em>
-  </li>
-  <li class="list-group-item mb-4">
-    <em><p>Actors:</p><%= @movie.actors %></em>
-  </li>
-</ul>
+<div class="d-flex flex-column align-items-center">
+  <!-- Image avec dimensions uniformes et bordures arrondies -->
+  <div class="mb-4">
+    <%= cl_image_tag @movie.photo.key, height: 300, width: 400, class: "img-fluid rounded border", style: "object-fit: contain;" %>
+  </div>
 
-<div>
-  <div><%= link_to "Back", movies_path, class: 'btn btn-primary' %></div>
-  <div>
-     <%= button_to "Like", movie_likes_path(@movie), method: :post, class: 'btn btn-primary', params: { movie_id: @movie.id } %>
+  <ul class="list-group w-50">
+    <li class="list-group-item mb-4">
+      <em><strong>Summary:</strong> <%= @movie.summary %></em>
+    </li>
+    <li class="list-group-item mb-4">
+      <em><strong>Director:</strong> <%= @movie.director %></em>
+    </li>
+    <li class="list-group-item mb-4">
+      <em><strong>Actors:</strong> <%= @movie.actors %></em>
+    </li>
+  </ul>
+
+  <!-- Boutons Back et Like -->
+  <div class="mt-4 d-flex justify-content-center gap-3">
+    <%= link_to "Back", movies_path, class: 'btn btn-outline-primary btn-lg' %>
+    <%= button_to "Like", movie_likes_path(@movie), method: :post, class: 'btn btn-warning btn-lg', params: { movie_id: @movie.id } %>
   </div>
 </div>
