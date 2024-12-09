@@ -10,5 +10,8 @@ class MoviesController < ApplicationController
   def new
   end
 
+  def article_params
+    params.require(:movie).permit(:title, :body, :photo)
+  end
 
 end

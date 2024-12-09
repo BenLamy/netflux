@@ -4,7 +4,9 @@
   <% @likes.each do |like| %>
     <li>
       <strong>Movie:</strong> <%= like.movie.title %><br>
-      <img src="<%= like.movie.image_url %>" alt="<%= like.movie.title %>" style="width: 150px;"><br>
+      <div>
+        <%= cl_image_tag like.movie.photo.key, height: 300, width: 400, crop: :fill %>
+      </div>
       <%= link_to "Unlike", like_path(like), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
           class: 'btn btn-warning ml-2 mb-4'%>
     </li>
